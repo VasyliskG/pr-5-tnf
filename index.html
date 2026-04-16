@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TensorFlow.js Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🧠 TensorFlow.js Demo</h1>
+    <nav>
+      <button class="nav-btn active" data-tab="housing">🏠 Будинки</button>
+      <button class="nav-btn" data-tab="mnist">🔢 Цифри</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Секція: Прогнозування цін будинків -->
+    <section id="housing" class="tab-content active">
+      <h2>Прогнозування цін будинків</h2>
+      
+      <div class="input-group">
+        <label>
+          Площа (кв. фути):
+          <input type="number" id="house-size" placeholder="3000" min="500" max="5000">
+        </label>
+        <label>
+          Кількість спалень:
+          <select id="house-bedrooms">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+          </select>
+        </label>
+        <button id="predict-btn">Прогнозувати ціну</button>
+      </div>
+
+      <div class="results">
+        <div class="result-card">
+          <h3>Передбачена ціна:</h3>
+          <p id="housing-result" class="price">—</p>
+        </div>
+        <div class="result-card">
+          <h3>Статус моделі:</h3>
+          <p id="housing-status">Завантаження...</p>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="housing-chart"></canvas>
+      </div>
+    </section>
+
+    <!-- Секція: Розпізнавання цифр -->
+    <section id="mnist" class="tab-content">
+      <h2>Розпізнавання рукописних цифр</h2>
+      
+      <div class="mnist-container">
+        <div class="canvas-wrapper">
+          <canvas id="digit-canvas" width="280" height="280"></canvas>
+          <div class="canvas-controls">
+            <button id="clear-canvas">Очистити</button>
+            <button id="recognize-btn">Розпізнати</button>
+          </div>
+        </div>
+
+        <div class="mnist-results">
+          <div class="prediction-display">
+            <h3>Передбачена цифра:</h3>
+            <p id="mnist-result" class="digit">—</p>
+          </div>
+          <div class="confidence-bars" id="confidence-bars"></div>
+        </div>
+      </div>
+
+      <div class="training-status">
+        <p id="mnist-status">Завантаження моделі...</p>
+        <progress id="training-progress" value="0" max="100"></progress>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

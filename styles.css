@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #eee;
+  min-height: 100vh;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+header h1 {
+  margin-bottom: 1rem;
+  color: #00d9ff;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #eee;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: #00d9ff;
+  color: #1a1a2e;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section h2 {
+  color: #00d9ff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.input-group {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group input,
+.input-group select {
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #eee;
+  font-size: 1rem;
+  width: 150px;
+}
+
+.input-group button {
+  padding: 0.75rem 1.5rem;
+  background: #00d9ff;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.input-group button:hover {
+  transform: scale(1.05);
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.result-card h3 {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.result-card .price {
+  font-size: 2rem;
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.result-card .digit {
+  font-size: 4rem;
+  color: #00d9ff;
+  font-weight: bold;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
+#housing-chart {
+  width: 100%;
+  height: 300px;
+}
+
+/* MNIST Styles */
+.mnist-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .mnist-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.canvas-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#digit-canvas {
+  background: #000;
+  border: 2px solid #00d9ff;
+  border-radius: 8px;
+  cursor: crosshair;
+}
+
+.canvas-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.canvas-controls button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+#clear-canvas {
+  background: #ff4757;
+  color: white;
+}
+
+#recognize-btn {
+  background: #00ff88;
+  color: #1a1a2e;
+}
+
+.confidence-bars {
+  margin-top: 1rem;
+}
+
+.confidence-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.confidence-bar span {
+  width: 20px;
+  font-weight: bold;
+}
+
+.confidence-bar .bar {
+  flex: 1;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.confidence-bar .fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d9ff, #00ff88);
+  transition: width 0.3s;
+}
+
+.confidence-bar .value {
+  width: 50px;
+  text-align: right;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.training-status {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.training-status progress {
+  width: 100%;
+  height: 10px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  accent-color: #00d9ff;
+}
